@@ -1,0 +1,19 @@
+HUNGRY MAILER
+=============
+
+(c) copyright Indranil Dasgupta. All Rights Reserved.
+
+Thank you for getting Hungry Mailer.
+
+To use hungry mailer, use this as the form :
+
+<form action="hungry_mailer.php" method="POST">
+
+Either you can open up the code file and put in the receiver email address and the subject, or use the following two input fields to set them on a per-form basis.
+
+To set them within the form, use the following elements :
+--- <input type="hidden" name="to" value="email@address.com">
+--- <input type="hidden" name="subject" value="Subject goes here">
+And that's that.
+
+Enjoy! :)
