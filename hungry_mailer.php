@@ -72,7 +72,7 @@ if(!isset($mailer)) {
 $message = "";
 $length = count($mailer['field']);
 for($i = 0; $i < $length; $i++) {
-	$message .= $mailer['field'][$i] . ' : ' . $mailer['value'][$i] . '\n';
+	$message .= $mailer['field'][$i] . ' : ' . $mailer['value'][$i] . "\n";
 }
 
 if(mail($to, $subject, $message)) {
