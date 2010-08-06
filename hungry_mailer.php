@@ -21,6 +21,7 @@
 
 $to = ''; // The email address of the receiver, i.e. : you.
 $subject = ''; // The subject message.
+$redirect = ''; // The page where you will be sent after the form successfully submits.
 
 // End configuration.
 	
@@ -32,7 +33,7 @@ if(isset($_POST['to']) && $_POST['to'] != '') {
 	    $to = $_POST['to'];
 	}
 }
-// And the subject
+// then, the subject
 if(isset($_POST['subject']) && $_POST['subject'] != '') {
 	if (!get_magic_quotes_gpc()) {
 	    $subject = addslashes($_POST['subject']);
@@ -40,9 +41,17 @@ if(isset($_POST['subject']) && $_POST['subject'] != '') {
 	    $subject = $_POST['subject'];
 	}
 }
+// and finally, the redirect
+if(isset($_POST['redirect']) && $_POST['redirect'] != '') {
+	if (!get_magic_quotes_gpc()) {
+	    $redirect = addslashes($_POST['redirect']);
+	} else {
+	    $redirect = $_POST['redirect'];
+	}
+}
 
 // Stuff we don't want
-$unchecked = array('to','subject','submit');
+$unchecked = array('to','subject','redirect','submit');
 
 foreach($_POST as $post_field => $post_value) {
 	$c = 0;
@@ -76,7 +85,11 @@ for($i = 0; $i < $length; $i++) {
 }
 
 if(mail($to, $subject, $message)) {
-	echo 'Mail successfully sent. Thank you.';
+	if($redirect != '') {
+		header('Location: ' . $redirect);
+	} else {
+		echo 'Mail successfully sent. Thank you.';
+	}
 } else {
 	echo 'Unable to send mail. Please try again';
 }
