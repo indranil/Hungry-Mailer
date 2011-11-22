@@ -4,7 +4,7 @@
  * Hungry Mail
  * 
  * @author Indranil Dasgupta
- * @version 0.6
+ * @version 0.7
  * @copyright Indranil Dasgupta, 2010
  * @package default
  */
